@@ -9,6 +9,7 @@ let add, tryAgain;
 let selectedIngredients = [];
 let boom;
 let container;
+let blackImage;
 
 function setup() {
   noCanvas();
@@ -82,6 +83,11 @@ function setup() {
   wrap.child(ingredients);
   wrap.child(click);
   wrap.child(text); //text is the header
+  wrap.child(flask1);
+  wrap.child(flask2);
+  wrap.child(flask3);
+  wrap.child(flames);
+
 
   click.mousePressed(putIngredients);
 }
@@ -112,7 +118,7 @@ function putIngredients() {
     ingr.style("width:8vh; position:absolute; top:15%; left:81vh")
     ingr.style("transform: rotate("+random(-180,180)+"deg)")
     ingr.style("animation: fall "+random(1,1.5)+"s ease-in forwards")
-    ingr.addClass("ball");
+    ingr.addClass("ingred");
   }
 
 //after 2 seconds (in order to show the ingredients falling) show the result, either failure or victory. If no ingredient has been selected do nothing
@@ -184,13 +190,56 @@ function win(){
     blackImage.style("width:100vw;height:100vh; position:absolute;top:0;left:0;opacity:0")
     blackImage.style("animation: blackFade 3s ease-in")
     wrap.child(blackImage);
+    let ingredientsToBeDeleted = selectAll(".ingred");
+    for (let i=0; i<ingredientsToBeDeleted.length; i++){
+      console.log(ingredientsToBeDeleted[i]);
+      ingredientsToBeDeleted[i].remove();
+    }
     //go in the victory page
-    setTimeout(function(){
+    setTimeout(function(){ //blody hell, it doesn't work on the github site D:
     //  window.open(url.origin + "/room.html?selectedIngredients=" + selectedIngredients + "&f=" + f + "&shape=" + shape, "_self");
+    goldPage();
     }, 3000)
+
 }
 
-//updatepage (from tryAgain button in case of failure)
+//update page (from tryAgain button in case of failure)
 function updatePage() {
-  window.open(url.origin + "/index.html", "_self");
+  //  window.open(url.origin + "/index.html", "_self"); //it doesn't work as well:(
+  shape=0;
+  flask1.show();
+  flask2.hide();
+  flask3.hide();
+  flames.hide();
+  f=0;
+  boom.remove()
+  let ingredientsToBeDeleted = selectAll(".ingred");
+  for (let i=0; i<ingredientsToBeDeleted.length; i++){
+    console.log(ingredientsToBeDeleted[i]);
+    ingredientsToBeDeleted[i].remove();
+  }
+  selectedIngredients = [];
+  checkbox1.checked(false);
+  checkbox2.checked(false);
+  checkbox3.checked(false);
+  checkbox4.checked(false);
+  checkbox5.checked(false);
+  click.show();
+  tryAgain.hide();
+}
+
+//victory page
+function goldPage(){
+  wrap.remove();
+  blackImage.remove();
+  let gold = createImg("assets/images/gold.png")
+  gold.style("position: absolute; top: 0; bottom: 0; left: 0; right: 0; margin: auto;");
+  gold.style("animation: gold 1s linear forwards");
+  setTimeout(function(){
+  text1 = createP("Great job");
+  text1.style("position: absolute; font-size:4vw; font-family:Catamaran; left:3.3vw;top: 100px; color: gold");
+  text2 = createP("You got <br>pure gold")
+  text2.style("position: absolute; font-size:4vw; font-family:Catamaran; left:80vw;top: 100px; color: gold");
+ }, 1000);
+
 }
