@@ -186,11 +186,11 @@ function win(){
     wrap.child(blackImage);
     //go in the victory page
     setTimeout(function(){
-      window.open(url.origin + "/room.html?selectedIngredients=" + selectedIngredients + "&f=" + f + "&shape=" + shape, "_self");
+    //  window.open(url.origin + "/room.html?selectedIngredients=" + selectedIngredients + "&f=" + f + "&shape=" + shape, "_self");
     }, 3000)
 }
 
 //updatepage (from tryAgain button in case of failure)
 function updatePage() {
-  window.open(url.origin + "/index.html", "_self");
+//  window.open(url.origin + "/index.html", "_self");
 }
