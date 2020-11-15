@@ -2,11 +2,46 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <style> body {padding: 0; margin: 0;} </style>
+    <meta name="viewport" width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@400;700&display=swap" rel="stylesheet">
+    <title>DOM Animation</title>
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+        background-color: #000;
+        font-family: sans-serif;
+      }
+      ::-webkit-scrollbar {
+        display: none;
+      }
+      @keyframes fall {
+        0% {top: -15%}
+        80% {top: 60vh}
+        85% {top: 65vh}
+        90% {top: 70vh}
+        95% {top: 65vh}
+        100% {top: 70vh}
+      }
+
+      @keyframes explosion {
+        0% {width: 0%;}
+        /* 30% {width: 380px}
+         85% {width: 370px} */
+        /* 80% {width: 380px}
+        90% {width: 350px} */
+        100% {width: 45%}
+      }
+
+      @keyframes blackFade {
+        0% {opacity:0}
+        100% {opacity:100}
+      }
+
+    </style>
     <script src="p5.min.js"></script>
-    <script src="p5.sound.min.js"></script>
-    <script src="sketch.js"></script>
+    <script src="assets/js/sketch.js"></script>
   </head>
   <body>
   </body>
