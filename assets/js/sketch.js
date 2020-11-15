@@ -192,5 +192,5 @@ function win(){
 
 //updatepage (from tryAgain button in case of failure)
 function updatePage() {
-//  window.open(url.origin + "/index.html", "_self");
+  window.open(url.origin + "/index.html", "_self");
 }
